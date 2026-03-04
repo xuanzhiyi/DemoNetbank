@@ -1,6 +1,8 @@
-import { currencyPairs } from '../services/mockData'
+import { currencyPairs, transfers } from '../services/mockData'
 import SpotPrices from '../components/FX/SpotPrices'
+import WorldMap from '../components/FX/WorldMap'
 import { useState } from 'react'
+import { Globe } from 'lucide-react'
 
 export default function FX() {
   const [selectedCurrency, setSelectedCurrency] = useState<string>('USD')
@@ -14,7 +16,10 @@ export default function FX() {
 
       {/* Currency Filter */}
       <div className="card">
-        <label className="block text-sm font-semibold text-navy-900 mb-2">Filter by Currency</label>
+        <label className="block text-sm font-semibold text-navy-900 mb-2 flex items-center gap-2">
+          <Globe size={16} className="text-pink-500" />
+          Filter by Currency
+        </label>
         <select
           value={selectedCurrency}
           onChange={(e) => setSelectedCurrency(e.target.value)}
@@ -31,11 +36,13 @@ export default function FX() {
         <p className="text-sm text-gray-500 mt-2">Showing transfers in {selectedCurrency}</p>
       </div>
 
-      {/* World Map Placeholder */}
-      <div className="card p-8">
-        <div className="bg-gray-100 rounded-lg h-96 flex items-center justify-center">
-          <p className="text-gray-600">Interactive world map with animated transfer flows coming soon...</p>
-        </div>
+      {/* World Map */}
+      <div className="card">
+        <h3 className="text-lg font-semibold text-navy-900 mb-4 flex items-center gap-2">
+          <Globe size={20} className="text-pink-500" />
+          Global Payment Flows
+        </h3>
+        <WorldMap transfers={transfers} selectedCurrency={selectedCurrency} />
       </div>
 
       {/* Spot Prices */}

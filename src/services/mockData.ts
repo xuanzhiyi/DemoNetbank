@@ -17,81 +17,81 @@ export const generateHistoricalBalances = (startBalance: number): HistoricalBala
   return data
 }
 
-// Accounts
+// Accounts (Base Currency: EUR)
 export const accounts: Account[] = [
   {
     id: 'acc-001',
     name: 'Main Current Account',
     type: 'current',
-    currency: 'USD',
-    balance: 2500000,
-    overdraftLimit: 500000
+    currency: 'EUR',
+    balance: 3200000,
+    overdraftLimit: 750000
   },
   {
     id: 'acc-002',
     name: 'Operating Account',
     type: 'current',
-    currency: 'USD',
-    balance: 1200000
+    currency: 'EUR',
+    balance: 1850000
   },
   {
     id: 'acc-003',
-    name: 'Savings Account',
+    name: 'Euro Savings Account',
     type: 'savings',
-    currency: 'USD',
-    balance: 5000000
+    currency: 'EUR',
+    balance: 6500000
   },
   {
     id: 'acc-004',
-    name: 'EUR Account',
+    name: 'USD Account',
     type: 'foreign',
-    currency: 'EUR',
-    balance: 800000
+    currency: 'USD',
+    balance: 2800000
   },
   {
     id: 'acc-005',
     name: 'GBP Account',
     type: 'foreign',
     currency: 'GBP',
-    balance: 500000
+    balance: 1200000
   },
   {
     id: 'acc-006',
     name: 'JPY Account',
     type: 'foreign',
     currency: 'JPY',
-    balance: 50000000
+    balance: 65000000
   },
   {
     id: 'acc-007',
-    name: 'Payable Account',
+    name: 'Payable Account EUR',
     type: 'payable',
-    currency: 'USD',
-    balance: -250000
+    currency: 'EUR',
+    balance: -380000
   },
   {
     id: 'acc-008',
-    name: 'Receivable Account',
+    name: 'Receivable Account EUR',
     type: 'receivable',
-    currency: 'USD',
-    balance: 750000
+    currency: 'EUR',
+    balance: 950000
   }
 ]
 
-// Cards
+// Cards (EUR)
 export const cards: Card[] = [
   {
     id: 'card-001',
-    name: 'Corporate Platinum',
-    balance: 150000,
-    limit: 500000,
+    name: 'Corporate Platinum EUR',
+    balance: 185000,
+    limit: 625000,
     lastTransaction: new Date()
   },
   {
     id: 'card-002',
-    name: 'Corporate Gold',
-    balance: 75000,
-    limit: 300000,
+    name: 'Corporate Gold EUR',
+    balance: 92000,
+    limit: 375000,
     lastTransaction: new Date(Date.now() - 86400000)
   }
 ]
@@ -100,30 +100,57 @@ export const cards: Card[] = [
 export const loans: Loan[] = [
   {
     id: 'loan-001',
-    name: 'Term Loan A - Fixed Rate',
+    name: 'European Syndicated Loan',
     type: 'fixed',
-    principal: 10000000,
-    rate: 4.5,
-    disbursementDate: new Date(2021, 0, 15),
-    maturityDate: new Date(2026, 0, 15)
+    principal: 15000000,
+    rate: 3.85,
+    disbursementDate: new Date(2023, 0, 15),
+    maturityDate: new Date(2028, 6, 15)
   },
   {
     id: 'loan-002',
-    name: 'Revolving Credit Facility',
+    name: 'Corporate Term Facility - EUR',
     type: 'floating',
-    principal: 5000000,
-    rate: 3.75,
+    principal: 12000000,
+    rate: 3.25,
     disbursementDate: new Date(2022, 6, 1),
-    maturityDate: new Date(2027, 6, 1)
+    maturityDate: new Date(2029, 3, 1)
   },
   {
     id: 'loan-003',
-    name: 'Bridge Loan',
+    name: 'Working Capital Line',
+    type: 'floating',
+    principal: 8500000,
+    rate: 2.95,
+    disbursementDate: new Date(2023, 6, 1),
+    maturityDate: new Date(2028, 12, 1)
+  },
+  {
+    id: 'loan-004',
+    name: 'Acquisition Finance - Fixed',
     type: 'fixed',
-    principal: 3000000,
-    rate: 5.2,
-    disbursementDate: new Date(2023, 0, 1),
-    maturityDate: new Date(2025, 0, 1)
+    principal: 22000000,
+    rate: 4.15,
+    disbursementDate: new Date(2022, 0, 1),
+    maturityDate: new Date(2029, 9, 1)
+  },
+  {
+    id: 'loan-005',
+    name: 'Real Estate Mortgage',
+    type: 'fixed',
+    principal: 18500000,
+    rate: 3.50,
+    disbursementDate: new Date(2023, 3, 1),
+    maturityDate: new Date(2030, 3, 1)
+  },
+  {
+    id: 'loan-006',
+    name: 'Equipment Finance',
+    type: 'floating',
+    principal: 5000000,
+    rate: 2.85,
+    disbursementDate: new Date(2022, 9, 1),
+    maturityDate: new Date(2028, 9, 1)
   }
 ]
 
@@ -131,17 +158,24 @@ export const loans: Loan[] = [
 export const hedges: Hedge[] = [
   {
     id: 'hedge-001',
-    name: 'Rate Collar - Loan A',
+    name: 'Rate Collar - Corporate Term Facility',
     type: 'collar',
     underlyingLoan: 'loan-002',
     strikePrice: 4.0
   },
   {
     id: 'hedge-002',
-    name: 'Interest Rate Cap',
+    name: 'Interest Rate Cap - Working Capital',
     type: 'cap',
-    underlyingLoan: 'loan-002',
-    strikePrice: 5.5
+    underlyingLoan: 'loan-003',
+    strikePrice: 4.5
+  },
+  {
+    id: 'hedge-003',
+    name: 'Rate Floor - Acquisition Finance',
+    type: 'floor',
+    underlyingLoan: 'loan-004',
+    strikePrice: 2.5
   }
 ]
 
@@ -149,37 +183,51 @@ export const hedges: Hedge[] = [
 export const collaterals: Collateral[] = [
   {
     id: 'collateral-001',
-    name: 'Real Estate - Office Building',
+    name: 'Corporate Real Estate - Munich',
     type: 'real_estate',
-    value: 15000000,
-    currency: 'USD'
+    value: 25000000,
+    currency: 'EUR'
   },
   {
     id: 'collateral-002',
-    name: 'Investment Portfolio',
+    name: 'European Investment Portfolio',
     type: 'investment',
-    value: 8000000,
-    currency: 'USD'
+    value: 16000000,
+    currency: 'EUR'
   },
   {
     id: 'collateral-003',
-    name: 'Equipment',
+    name: 'Manufacturing Equipment & Machinery',
     type: 'investment',
-    value: 2000000,
-    currency: 'USD'
+    value: 9500000,
+    currency: 'EUR'
+  },
+  {
+    id: 'collateral-004',
+    name: 'Real Estate - Retail Properties',
+    type: 'real_estate',
+    value: 18000000,
+    currency: 'EUR'
+  },
+  {
+    id: 'collateral-005',
+    name: 'Equity Holdings - Listed Companies',
+    type: 'investment',
+    value: 12500000,
+    currency: 'EUR'
   }
 ]
 
-// Assets
+// Assets (EUR)
 export const assets: Asset[] = [
-  { id: 'asset-001', name: 'Apple Inc.', type: 'equity', value: 2500000, quantity: 10000, currency: 'USD', percentage: 15 },
-  { id: 'asset-002', name: 'Microsoft Corp.', type: 'equity', value: 2000000, quantity: 5000, currency: 'USD', percentage: 12 },
-  { id: 'asset-003', name: 'MSCI World ETF', type: 'fund', value: 3000000, quantity: 50000, currency: 'USD', percentage: 18 },
-  { id: 'asset-004', name: 'Vanguard Bond ETF', type: 'fund', value: 2500000, quantity: 25000, currency: 'USD', percentage: 15 },
-  { id: 'asset-005', name: 'US Treasury Bond 5Y', type: 'bond', value: 1500000, quantity: 15, currency: 'USD', percentage: 9 },
-  { id: 'asset-006', name: 'Corporate Bond AA', type: 'bond', value: 1200000, quantity: 12, currency: 'USD', percentage: 7 },
-  { id: 'asset-007', name: 'Structured Product - Autocallable', type: 'structured', value: 1800000, quantity: 18, currency: 'USD', percentage: 11 },
-  { id: 'asset-008', name: 'Hedge Fund - Multi-Strategy', type: 'fund', value: 500000, quantity: 5, currency: 'USD', percentage: 3 }
+  { id: 'asset-001', name: 'Siemens AG', type: 'equity', value: 2800000, quantity: 15000, currency: 'EUR', percentage: 15 },
+  { id: 'asset-002', name: 'BASF SE', type: 'equity', value: 2250000, quantity: 8000, currency: 'EUR', percentage: 12 },
+  { id: 'asset-003', name: 'iShares EURO STOXX 50 ETF', type: 'fund', value: 3400000, quantity: 68000, currency: 'EUR', percentage: 18 },
+  { id: 'asset-004', name: 'Vanguard European Bond ETF', type: 'fund', value: 2850000, quantity: 28500, currency: 'EUR', percentage: 15 },
+  { id: 'asset-005', name: 'German Bundesanleihen 5Y', type: 'bond', value: 1700000, quantity: 17, currency: 'EUR', percentage: 9 },
+  { id: 'asset-006', name: 'European Corporate Bond AA', type: 'bond', value: 1350000, quantity: 13, currency: 'EUR', percentage: 7 },
+  { id: 'asset-007', name: 'Structured Product - Reverse Convertible', type: 'structured', value: 2000000, quantity: 20, currency: 'EUR', percentage: 11 },
+  { id: 'asset-008', name: 'European Hedge Fund - Equities', type: 'fund', value: 570000, quantity: 5700, currency: 'EUR', percentage: 3 }
 ]
 
 // Currency Pairs
@@ -196,16 +244,35 @@ export const currencyPairs: CurrencyPair[] = [
 
 // Transfers (for FX map)
 export const transfers: Transfer[] = [
+  // USD Transfers
   { id: 't-001', from: 'United States', to: 'United Kingdom', amount: 500000, currency: 'USD', date: new Date() },
   { id: 't-002', from: 'United States', to: 'Germany', amount: 750000, currency: 'USD', date: new Date(Date.now() - 3600000) },
   { id: 't-003', from: 'United States', to: 'Japan', amount: 1000000, currency: 'USD', date: new Date(Date.now() - 7200000) },
-  { id: 't-004', from: 'United Kingdom', to: 'Singapore', amount: 300000, currency: 'GBP', date: new Date(Date.now() - 10800000) },
-  { id: 't-005', from: 'Germany', to: 'France', amount: 450000, currency: 'EUR', date: new Date(Date.now() - 14400000) },
-  { id: 't-006', from: 'Singapore', to: 'Australia', amount: 200000, currency: 'SGD', date: new Date(Date.now() - 18000000) },
-  { id: 't-007', from: 'Japan', to: 'Hong Kong', amount: 250000, currency: 'JPY', date: new Date(Date.now() - 21600000) },
   { id: 't-008', from: 'United States', to: 'Canada', amount: 600000, currency: 'USD', date: new Date(Date.now() - 25200000) },
+  { id: 't-020', from: 'Canada', to: 'United States', amount: 450000, currency: 'USD', date: new Date(Date.now() - 1800000) },
+
+  // EUR Transfers
+  { id: 't-005', from: 'Germany', to: 'France', amount: 1200000, currency: 'EUR', date: new Date(Date.now() - 14400000) },
+  { id: 't-010', from: 'France', to: 'Switzerland', amount: 850000, currency: 'EUR', date: new Date(Date.now() - 32400000) },
+  { id: 't-011', from: 'Germany', to: 'United Kingdom', amount: 950000, currency: 'EUR', date: new Date(Date.now() - 1200000) },
+  { id: 't-012', from: 'Switzerland', to: 'Germany', amount: 680000, currency: 'EUR', date: new Date(Date.now() - 2400000) },
+  { id: 't-013', from: 'France', to: 'Germany', amount: 1100000, currency: 'EUR', date: new Date(Date.now() - 3600000) },
+
+  // GBP Transfers
+  { id: 't-004', from: 'United Kingdom', to: 'Singapore', amount: 300000, currency: 'GBP', date: new Date(Date.now() - 10800000) },
+  { id: 't-014', from: 'United Kingdom', to: 'United States', amount: 420000, currency: 'GBP', date: new Date(Date.now() - 5400000) },
+
+  // JPY Transfers
+  { id: 't-007', from: 'Japan', to: 'Hong Kong', amount: 250000, currency: 'JPY', date: new Date(Date.now() - 21600000) },
+  { id: 't-015', from: 'Japan', to: 'Singapore', amount: 320000, currency: 'JPY', date: new Date(Date.now() - 4200000) },
+
+  // SGD Transfers
+  { id: 't-006', from: 'Singapore', to: 'Australia', amount: 200000, currency: 'SGD', date: new Date(Date.now() - 18000000) },
+  { id: 't-016', from: 'Singapore', to: 'United Kingdom', amount: 280000, currency: 'SGD', date: new Date(Date.now() - 6000000) },
+
+  // HKD Transfers
   { id: 't-009', from: 'Hong Kong', to: 'United States', amount: 400000, currency: 'HKD', date: new Date(Date.now() - 28800000) },
-  { id: 't-010', from: 'France', to: 'Switzerland', amount: 350000, currency: 'EUR', date: new Date(Date.now() - 32400000) }
+  { id: 't-017', from: 'Hong Kong', to: 'Singapore', amount: 150000, currency: 'HKD', date: new Date(Date.now() - 7200000) }
 ]
 
 // Staff
@@ -304,8 +371,8 @@ export const meetings: Meeting[] = [
   }
 ]
 
-// Historical Balance Data for Account Page
-export const accountBalanceHistory = generateHistoricalBalances(2500000)
+// Historical Balance Data for Account Page (EUR)
+export const accountBalanceHistory = generateHistoricalBalances(3200000)
 
 // Allocation Data
 export const allocationData = {
@@ -333,10 +400,10 @@ export const allocationData = {
   }
 }
 
-// Portfolio Risk Metrics
+// Portfolio Risk Metrics (EUR)
 export const riskMetrics = {
-  var95: 450000,
-  var995: 650000,
+  var95: 520000,
+  var995: 750000,
   expectedReturn: 8.5,
   volatility: 12.3,
   correlation: [

@@ -16,7 +16,7 @@ export default function AssetWealth() {
       {/* Portfolio Overview */}
       <PortfolioEvaluation
         totalValue={portfolioValue}
-        gainLoss={245000}
+        gainLoss={285000}
         gainLossPercent={10.2}
         riskMetrics={riskMetrics}
       />

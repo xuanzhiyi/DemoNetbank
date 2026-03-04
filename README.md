@@ -113,12 +113,14 @@ Configuration files:
 ## Theme & Design
 
 ### Color Palette
-- **Primary**: Navy Blue (#1a237e)
-- **Secondary**: Pink (#e91e63)
-- **Neutrals**: Gray shades for backgrounds and text
+- **Primary**: Deep Blue (#001E9E) - used for headers, buttons, and primary UI elements
+- **Primary Text on Blue**: Light Gray (#F0F0F0) - text displayed on #001E9E backgrounds
+- **Secondary**: Pink (#e91e63) - used for accents and highlights
+- **Neutrals**: Gray shades for backgrounds and text on white backgrounds
 - **Success**: Green
 - **Warning**: Orange
 - **Error**: Red
+- **Design**: No gradients - solid color blocks for clean, modern appearance
 
 ### Responsive Design
 - Mobile-first approach

@@ -9,12 +9,12 @@ export default {
     extend: {
       colors: {
         navy: {
-          50: '#f0f4ff',
-          100: '#e6ecff',
-          500: '#1a237e',
-          600: '#0d1b5e',
-          700: '#0a1645',
-          900: '#050b2f',
+          50: '#f5f7ff',
+          100: '#e8edff',
+          500: '#001E9E',
+          600: '#001a7f',
+          700: '#001560',
+          900: '#000d2e',
         },
         pink: {
           400: '#f06292',
@@ -25,6 +25,9 @@ export default {
       },
       fontFamily: {
         sans: ['"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+      },
+      textColor: {
+        light: '#F0F0F0',
       }
     },
   },
