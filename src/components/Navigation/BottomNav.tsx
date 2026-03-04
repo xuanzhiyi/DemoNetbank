@@ -21,13 +21,13 @@ export default function BottomNav() {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-around items-center">
+      <div className="w-full">
+        <div className="flex items-center h-20">
           {navItems.map((item) => (
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
-              className={`flex flex-col items-center justify-center py-3 px-4 flex-1 transition-colors ${
+              className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
                 location.pathname === item.path ||
                 (item.path === '/account' && location.pathname === '/')
                   ? 'text-pink-500 border-t-2 border-pink-500'

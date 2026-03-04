@@ -12,7 +12,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
       <header className="bg-navy-500 px-4 py-4 shadow-md" style={{ color: '#F0F0F0' }}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div>
-            <h1 className="text-2xl font-bold">DemoNetbank</h1>
+            <h1 className="text-2xl font-bold" style={{ color: '#F0F0F0' }}>DemoNetbank</h1>
             <p className="text-sm" style={{ opacity: 0.8 }}>Corporate Banking Platform</p>
           </div>
           <div className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center font-bold">

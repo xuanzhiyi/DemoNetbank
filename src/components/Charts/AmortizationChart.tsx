@@ -56,7 +56,7 @@ export default function AmortizationChart({ loan }: AmortizationChartProps) {
   const options = {
     indexAxis: 'x' as const,
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: true,
@@ -135,7 +135,7 @@ export default function AmortizationChart({ loan }: AmortizationChartProps) {
         </div>
 
         {/* Chart */}
-        <div className="relative h-80 mb-6">
+        <div className="relative mb-6" style={{ height: '500px' }}>
           <Bar data={chartData} options={options} />
         </div>
 
