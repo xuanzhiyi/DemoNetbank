@@ -1,10 +1,12 @@
 import { loans, hedges, collaterals } from '../services/mockData'
 import LoanList from '../components/LoanHedge/LoanList'
 import CollateralList from '../components/LoanHedge/CollateralList'
+import AmortizationChart from '../components/Charts/AmortizationChart'
 import { useState } from 'react'
 
 export default function LoanHedge() {
   const [selectedLoanId, setSelectedLoanId] = useState<string>(loans[0].id)
+  const selectedLoan = loans.find(l => l.id === selectedLoanId)
 
   return (
     <div className="space-y-8">
@@ -23,10 +25,8 @@ export default function LoanHedge() {
         </div>
       </div>
 
-      {/* Placeholder for AmortizationChart */}
-      <div className="card p-8 text-center">
-        <p className="text-gray-600">Amortization chart coming soon...</p>
-      </div>
+      {/* Amortization Chart */}
+      {selectedLoan && <AmortizationChart loan={selectedLoan} />}
     </div>
   )
 }
