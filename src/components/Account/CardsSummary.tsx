@@ -29,18 +29,18 @@ export default function CardsSummary({ cards }: CardsSummaryProps) {
             <div className="grid grid-cols-2 gap-4 pt-4" style={{ borderTop: '1px solid rgba(240, 240, 240, 0.2)' }}>
               <div>
                 <p className="text-xs uppercase tracking-wide" style={{ opacity: 0.75 }}>Balance</p>
-                <p className="text-xl font-bold">${(card.balance / 1000).toFixed(1)}k</p>
+                <p className="text-xl font-bold">€{(card.balance / 1000).toFixed(1)}k</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-wide" style={{ opacity: 0.75 }}>Limit</p>
-                <p className="text-xl font-bold">${(card.limit / 1000).toFixed(1)}k</p>
+                <p className="text-xl font-bold">€{(card.limit / 1000).toFixed(1)}k</p>
               </div>
             </div>
 
             <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(240, 240, 240, 0.2)' }}>
               <div className="flex justify-between items-center">
                 <span className="text-xs" style={{ opacity: 0.75 }}>Available</span>
-                <span className="text-sm font-bold">${((card.limit - card.balance) / 1000).toFixed(1)}k</span>
+                <span className="text-sm font-bold">€{((card.limit - card.balance) / 1000).toFixed(1)}k</span>
               </div>
               <div className="w-full rounded-full h-2 mt-2" style={{ backgroundColor: 'rgba(240, 240, 240, 0.2)' }}>
                 <div

@@ -75,7 +75,7 @@ export default function AmortizationChart({ loan }: AmortizationChartProps) {
         padding: 10,
         callbacks: {
           label: function(context: any) {
-            return context.dataset.label + ': $' + context.parsed.y.toLocaleString('en-US', { maximumFractionDigits: 0 })
+            return context.dataset.label + ': €' + context.parsed.y.toLocaleString('en-US', { maximumFractionDigits: 0 })
           }
         }
       }
@@ -96,7 +96,7 @@ export default function AmortizationChart({ loan }: AmortizationChartProps) {
         stacked: true,
         ticks: {
           callback: function(value: any) {
-            return '$' + (value / 1000).toFixed(0) + 'k'
+            return '€' + (value / 1000).toFixed(0) + 'k'
           }
         },
         grid: {
@@ -122,11 +122,11 @@ export default function AmortizationChart({ loan }: AmortizationChartProps) {
         <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="bg-navy-50 rounded-lg p-4">
             <p className="text-gray-600 text-sm mb-1">Loan Amount</p>
-            <p className="text-2xl font-bold text-navy-900">${(loan.principal / 1000000).toFixed(1)}M</p>
+            <p className="text-2xl font-bold text-navy-900">€{(loan.principal / 1000000).toFixed(1)}M</p>
           </div>
           <div className="bg-pink-50 rounded-lg p-4">
             <p className="text-gray-600 text-sm mb-1">Total Interest</p>
-            <p className="text-2xl font-bold text-pink-600">${(totalInterest / 1000000).toFixed(2)}M</p>
+            <p className="text-2xl font-bold text-pink-600">€{(totalInterest / 1000000).toFixed(2)}M</p>
           </div>
           <div className="bg-green-50 rounded-lg p-4">
             <p className="text-gray-600 text-sm mb-1">Term</p>
@@ -168,16 +168,16 @@ export default function AmortizationChart({ loan }: AmortizationChartProps) {
                 <tr key={idx} className="border-b border-gray-100 hover:bg-gray-50">
                   <td className="py-3 px-3 font-medium text-navy-900">{row.period}</td>
                   <td className="text-right py-3 px-3 text-navy-600 font-semibold">
-                    ${row.principal.toLocaleString()}
+                    €{row.principal.toLocaleString()}
                   </td>
                   <td className="text-right py-3 px-3 text-pink-600 font-semibold">
-                    ${row.interest.toLocaleString()}
+                    €{row.interest.toLocaleString()}
                   </td>
                   <td className="text-right py-3 px-3 text-gray-900 font-semibold">
-                    ${(row.principal + row.interest).toLocaleString()}
+                    €{(row.principal + row.interest).toLocaleString()}
                   </td>
                   <td className="text-right py-3 px-3 text-gray-700">
-                    ${row.balance.toLocaleString()}
+                    €{row.balance.toLocaleString()}
                   </td>
                 </tr>
               ))}
@@ -188,7 +188,7 @@ export default function AmortizationChart({ loan }: AmortizationChartProps) {
         {/* Footer Summary */}
         <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between text-sm font-semibold">
           <span className="text-gray-700">Total Payments:</span>
-          <span className="text-navy-900">${(totalPrincipal + totalInterest).toLocaleString()}</span>
+          <span className="text-navy-900">€{(totalPrincipal + totalInterest).toLocaleString()}</span>
         </div>
       </div>
     </div>

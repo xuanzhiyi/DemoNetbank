@@ -52,7 +52,7 @@ export default function LoanList({ loans, hedges, selectedLoanId, onSelectLoan }
               <div className="grid grid-cols-3 gap-2 border-t border-gray-200 pt-3 text-sm">
                 <div>
                   <p className="text-gray-600 text-xs">Principal</p>
-                  <p className="font-semibold text-navy-900">${(loan.principal / 1000000).toFixed(1)}M</p>
+                  <p className="font-semibold text-navy-900">€{(loan.principal / 1000000).toFixed(1)}M</p>
                 </div>
                 <div>
                   <p className="text-gray-600 text-xs">Days to Maturity</p>

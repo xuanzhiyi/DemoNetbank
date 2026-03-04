@@ -1,5 +1,5 @@
 import { Account } from '../../types'
-import { DollarSign, Wallet } from 'lucide-react'
+import { Wallet } from 'lucide-react'
 
 interface AccountListProps {
   accounts: Account[]
@@ -47,21 +47,21 @@ export default function AccountList({ accounts }: AccountListProps) {
                       {account.currency}
                     </p>
                   </div>
-                  <DollarSign size={24} className="text-pink-500" />
+                  <span className="text-2xl text-pink-500 font-bold">€</span>
                 </div>
 
                 <div className="space-y-2 border-t border-gray-200 pt-3">
                   <div className="flex justify-between">
                     <span className="text-gray-600 text-sm">Balance</span>
                     <span className={`font-bold ${account.balance >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                      {account.currency} {Math.abs(account.balance).toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                      €{Math.abs(account.balance).toLocaleString('en-US', { maximumFractionDigits: 0 })}
                     </span>
                   </div>
                   {account.overdraftLimit && (
                     <div className="flex justify-between">
                       <span className="text-gray-600 text-sm">Overdraft Limit</span>
                       <span className="text-navy-600 font-semibold">
-                        {account.currency} {account.overdraftLimit.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                        €{account.overdraftLimit.toLocaleString('en-US', { maximumFractionDigits: 0 })}
                       </span>
                     </div>
                   )}

@@ -27,7 +27,7 @@ export default function CollateralList({ collaterals }: CollateralListProps) {
 
       <div className="card bg-gradient-to-br from-navy-50 to-white">
         <p className="text-gray-600 text-sm mb-1">Total Collateral Value</p>
-        <p className="text-3xl font-bold text-navy-900">${(totalValue / 1000000).toFixed(1)}M</p>
+        <p className="text-3xl font-bold text-navy-900">€{(totalValue / 1000000).toFixed(1)}M</p>
       </div>
 
       <div className="space-y-3">
@@ -40,7 +40,7 @@ export default function CollateralList({ collaterals }: CollateralListProps) {
                   {typeLabels[collateral.type]}
                 </p>
               </div>
-              <span className="font-bold text-pink-600">${(collateral.value / 1000000).toFixed(1)}M</span>
+              <span className="font-bold text-pink-600">€{(collateral.value / 1000000).toFixed(1)}M</span>
             </div>
             <div className="text-xs text-gray-500">
               {collateral.currency}

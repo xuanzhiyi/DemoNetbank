@@ -22,8 +22,8 @@ export default function PortfolioEvaluation({
           <BarChart3 size={16} />
           Total Portfolio Value
         </p>
-        <p className="text-3xl font-bold text-navy-900">${(totalValue / 1000000).toFixed(1)}M</p>
-        <p className="text-xs text-gray-500 mt-2">USD equivalent</p>
+        <p className="text-3xl font-bold text-navy-900">€{(totalValue / 1000000).toFixed(1)}M</p>
+        <p className="text-xs text-gray-500 mt-2">Euro</p>
       </div>
 
       {/* Gain/Loss */}
@@ -33,7 +33,7 @@ export default function PortfolioEvaluation({
           Unrealized Gain
         </p>
         <p className={`text-3xl font-bold ${gainLoss >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-          ${(gainLoss / 1000000).toFixed(2)}M
+          €{(gainLoss / 1000000).toFixed(2)}M
         </p>
         <p className={`text-xs font-semibold mt-2 ${gainLoss >= 0 ? 'text-green-600' : 'text-red-600'}`}>
           {gainLoss >= 0 ? '+' : ''}{gainLossPercent.toFixed(2)}%

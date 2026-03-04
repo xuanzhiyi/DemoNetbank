@@ -70,7 +70,7 @@ export default function BalanceHistoryChart({ data }: BalanceHistoryChartProps) 
         displayColors: false,
         callbacks: {
           label: function(context: any) {
-            return `Balance: $${context.parsed.y.toLocaleString('en-US', { maximumFractionDigits: 0 })}`
+            return `Balance: €${context.parsed.y.toLocaleString('en-US', { maximumFractionDigits: 0 })}`
           }
         }
       }
@@ -80,7 +80,7 @@ export default function BalanceHistoryChart({ data }: BalanceHistoryChartProps) 
         beginAtZero: false,
         ticks: {
           callback: function(value: any) {
-            return '$' + (value / 1000000).toFixed(1) + 'M'
+            return '€' + (value / 1000000).toFixed(1) + 'M'
           }
         },
         grid: {

@@ -49,7 +49,7 @@ export default function AssetsList({ assets }: AssetsListProps) {
                         {asset.quantity.toLocaleString()}
                       </td>
                       <td className="text-right py-3 px-3 font-semibold text-navy-900">
-                        ${(asset.value / 1000000).toFixed(2)}M
+                        €{(asset.value / 1000000).toFixed(2)}M
                       </td>
                       <td className="text-right py-3 px-3">
                         <div className="flex items-center justify-end gap-2">
