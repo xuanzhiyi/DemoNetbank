@@ -1,4 +1,4 @@
-import { Account, Card, HistoricalBalance, Loan, Hedge, Collateral, Asset, CurrencyPair, Staff, Meeting, Transfer } from '../types'
+import { Account, Card, HistoricalBalance, Loan, Hedge, Collateral, Asset, CurrencyPair, Staff, Meeting, Transfer, Document } from '../types'
 
 // Generate monthly historical data for past year
 export const generateHistoricalBalances = (startBalance: number): HistoricalBalance[] => {
@@ -412,3 +412,115 @@ export const riskMetrics = {
     [0.45, 0.52, 1.0]
   ]
 }
+
+// Documents Archive
+export const documents: Document[] = [
+  {
+    id: 'doc-001',
+    name: 'Trade Confirmation - EUR/USD Forward',
+    type: 'trade_confirmation',
+    category: 'trading',
+    date: new Date(Date.now() - 86400000 * 2),
+    size: 245,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-002',
+    name: 'Loan Agreement - Term Loan A',
+    type: 'loan_contract',
+    category: 'lending',
+    date: new Date(Date.now() - 86400000 * 30),
+    size: 1250,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-003',
+    name: 'Monthly Account Statement - March 2026',
+    type: 'statement',
+    category: 'account',
+    date: new Date(Date.now() - 86400000 * 5),
+    size: 580,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-004',
+    name: 'Trade Confirmation - FX Swap GBP/EUR',
+    type: 'trade_confirmation',
+    category: 'trading',
+    date: new Date(Date.now() - 86400000 * 7),
+    size: 220,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-005',
+    name: 'Loan Agreement - Term Loan B Refinancing',
+    type: 'loan_contract',
+    category: 'lending',
+    date: new Date(Date.now() - 86400000 * 60),
+    size: 1450,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-006',
+    name: 'Interest Rate Collar Confirmation',
+    type: 'confirmation',
+    category: 'trading',
+    date: new Date(Date.now() - 86400000 * 15),
+    size: 310,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-007',
+    name: 'Monthly Account Statement - February 2026',
+    type: 'statement',
+    category: 'account',
+    date: new Date(Date.now() - 86400000 * 35),
+    size: 615,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-008',
+    name: 'Securities Pledge Agreement',
+    type: 'agreement',
+    category: 'legal',
+    date: new Date(Date.now() - 86400000 * 90),
+    size: 890,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-009',
+    name: 'Trade Confirmation - Bond Purchase',
+    type: 'trade_confirmation',
+    category: 'trading',
+    date: new Date(Date.now() - 86400000 * 12),
+    size: 275,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-010',
+    name: 'Credit Facility Agreement Amendment',
+    type: 'agreement',
+    category: 'legal',
+    date: new Date(Date.now() - 86400000 * 45),
+    size: 1120,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-011',
+    name: 'Monthly Account Statement - January 2026',
+    type: 'statement',
+    category: 'account',
+    date: new Date(Date.now() - 86400000 * 65),
+    size: 598,
+    fileType: 'pdf'
+  },
+  {
+    id: 'doc-012',
+    name: 'Trade Confirmation - Equity Option Position',
+    type: 'trade_confirmation',
+    category: 'trading',
+    date: new Date(Date.now() - 86400000 * 20),
+    size: 290,
+    fileType: 'pdf'
+  }
+]

@@ -1,7 +1,8 @@
-import { staffDirectory, meetings } from '../services/mockData'
+import { staffDirectory, meetings, documents } from '../services/mockData'
 import StaffDirectory from '../components/Help/StaffDirectory'
 import MeetingTimeline from '../components/Help/MeetingTimeline'
 import MeetingRequest from '../components/Help/MeetingRequest'
+import DocumentArchive from '../components/Help/DocumentArchive'
 import { useState } from 'react'
 
 export default function Help() {
@@ -41,6 +42,9 @@ export default function Help() {
           />
         )}
       </div>
+
+      {/* Document Archive */}
+      <DocumentArchive documents={documents} />
     </div>
   )
 }

@@ -146,6 +146,16 @@ export interface MeetingRequest {
   message: string
 }
 
+export interface Document {
+  id: string
+  name: string
+  type: 'trade_confirmation' | 'loan_contract' | 'statement' | 'confirmation' | 'agreement'
+  category: 'trading' | 'lending' | 'account' | 'legal'
+  date: Date
+  size: number // in KB
+  fileType: 'pdf' | 'docx' | 'xlsx' | 'txt'
+}
+
 // User Types
 export interface User {
   id: string
