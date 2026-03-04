@@ -27,7 +27,7 @@ interface AmortizationChartProps {
 
 export default function AmortizationChart({ loan }: AmortizationChartProps) {
   const range = getAmortizationRange(loan)
-  const schedule = generateAmortizationSchedule(loan, range.quarters)
+  const schedule = generateAmortizationSchedule(loan, range.quarters, range.start)
 
   const chartData = {
     labels: schedule.map(s => s.period),
@@ -135,7 +135,7 @@ export default function AmortizationChart({ loan }: AmortizationChartProps) {
         </div>
 
         {/* Chart */}
-        <div className="relative mb-6" style={{ height: '500px' }}>
+        <div className="relative mb-6" style={{ height: '350px' }}>
           <Bar data={chartData} options={options} />
         </div>
 

@@ -1,6 +1,6 @@
 import { Loan, AmortizationSchedule } from '../types'
 
-export function generateAmortizationSchedule(loan: Loan, quarters: number = 20): AmortizationSchedule[] {
+export function generateAmortizationSchedule(loan: Loan, quarters: number = 20, startDate: Date = new Date()): AmortizationSchedule[] {
   const schedule: AmortizationSchedule[] = []
   let balance = loan.principal
   const quarterlyRate = loan.rate / 100 / 4
@@ -16,8 +16,12 @@ export function generateAmortizationSchedule(loan: Loan, quarters: number = 20):
     balance -= principal
     balance = Math.max(0, balance) // Prevent negative balance
 
+    // Calculate which quarter and year
+    const quarterNum = ((i - 1) % 4) + 1
+    const year = startDate.getFullYear() + Math.floor((i - 1) / 4)
+
     schedule.push({
-      period: `Q${i}`,
+      period: `Q${quarterNum}-${year}`,
       principal: Math.round(principal),
       interest: Math.round(interest),
       balance: Math.round(Math.max(0, balance))
