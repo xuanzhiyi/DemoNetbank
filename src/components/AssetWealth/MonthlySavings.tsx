@@ -58,8 +58,9 @@ export default function MonthlySavings({ data }: MonthlySavingsProps) {
       x: { grid: { display: false } },
       y: {
         ticks: {
-          callback: (v: number | string) =>
-            typeof v === 'number' ? `€${(v / 1000).toFixed(0)}K` : v
+          callback: function (v: number | string) {
+            return typeof v === 'number' ? `€${(v / 1000).toFixed(0)}K` : v
+          }
         }
       }
     }
