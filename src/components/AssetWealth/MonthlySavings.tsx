@@ -52,8 +52,10 @@ export default function MonthlySavings({ data }: MonthlySavingsProps) {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          label: (ctx: TooltipItem<'bar'>) =>
-            `${ctx.dataset.label}: €${ctx.parsed.y.toLocaleString()}`
+          label: function(ctx: TooltipItem<'bar'>): string {
+            const label = ctx.dataset.label || ''
+            return `${label}: €${ctx.parsed.y.toLocaleString()}`
+          }
         }
       }
     },
