@@ -89,6 +89,32 @@ export interface Allocation {
   rating: Record<string, number>
 }
 
+// Monthly Savings Types
+export interface MonthlySavingEntry {
+  month: string
+  contribution: number
+  interestEarned: number
+  balance: number
+}
+
+export interface SavingsGoal {
+  id: string
+  name: string
+  targetAmount: number
+  currentAmount: number
+  targetDate: Date
+}
+
+export interface SavingsSummary {
+  currentBalance: number
+  monthlyContribution: number
+  annualInterestRate: number
+  totalInterestEarned: number
+  currency: string
+  monthlyEntries: MonthlySavingEntry[]
+  goals: SavingsGoal[]
+}
+
 // FX Types
 export interface CurrencyPair {
   pair: string

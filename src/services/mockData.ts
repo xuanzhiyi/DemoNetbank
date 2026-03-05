@@ -1,4 +1,4 @@
-import { Account, Card, HistoricalBalance, Loan, Hedge, Collateral, Asset, CurrencyPair, Staff, Meeting, Transfer, Document } from '../types'
+import { Account, Card, HistoricalBalance, Loan, Hedge, Collateral, Asset, CurrencyPair, Staff, Meeting, Transfer, Document, SavingsSummary } from '../types'
 
 // Generate monthly historical data for past year
 export const generateHistoricalBalances = (startBalance: number): HistoricalBalance[] => {
@@ -412,6 +412,60 @@ export const riskMetrics = {
     [0.45, 0.52, 1.0]
   ]
 }
+
+// Monthly Savings Data
+const generateMonthlySavings = (): SavingsSummary => {
+  const now = new Date()
+  const annualRate = 3.25
+  const monthlyRate = annualRate / 12 / 100
+  let balance = 5800000
+  let totalInterest = 0
+
+  const monthlyEntries = []
+  for (let i = 11; i >= 0; i--) {
+    const date = new Date(now.getFullYear(), now.getMonth() - i, 1)
+    const monthName = date.toLocaleString('default', { month: 'short', year: '2-digit' })
+    const contribution = 50000 + Math.round((Math.random() - 0.3) * 20000)
+    const interestEarned = Math.round(balance * monthlyRate)
+    balance = balance + contribution + interestEarned
+    totalInterest += interestEarned
+    monthlyEntries.push({ month: monthName, contribution, interestEarned, balance })
+  }
+
+  return {
+    currentBalance: balance,
+    monthlyContribution: 50000,
+    annualInterestRate: annualRate,
+    totalInterestEarned: totalInterest,
+    currency: 'EUR',
+    monthlyEntries,
+    goals: [
+      {
+        id: 'goal-001',
+        name: 'Capital Reserve Fund',
+        targetAmount: 8000000,
+        currentAmount: balance,
+        targetDate: new Date(now.getFullYear() + 2, now.getMonth(), 1)
+      },
+      {
+        id: 'goal-002',
+        name: 'Equipment Renewal Fund',
+        targetAmount: 3000000,
+        currentAmount: 2150000,
+        targetDate: new Date(now.getFullYear() + 1, 5, 1)
+      },
+      {
+        id: 'goal-003',
+        name: 'R&D Investment Reserve',
+        targetAmount: 5000000,
+        currentAmount: 1800000,
+        targetDate: new Date(now.getFullYear() + 3, 0, 1)
+      }
+    ]
+  }
+}
+
+export const savingsSummary: SavingsSummary = generateMonthlySavings()
 
 // Documents Archive
 export const documents: Document[] = [

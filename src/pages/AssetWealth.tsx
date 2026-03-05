@@ -1,7 +1,8 @@
-import { assets, allocationData, riskMetrics } from '../services/mockData'
+import { assets, allocationData, riskMetrics, savingsSummary } from '../services/mockData'
 import AssetsList from '../components/AssetWealth/AssetsList'
 import AllocationCharts from '../components/Charts/AllocationPieCharts'
 import PortfolioEvaluation from '../components/AssetWealth/PortfolioEvaluation'
+import MonthlySavings from '../components/AssetWealth/MonthlySavings'
 
 export default function AssetWealth() {
   const portfolioValue = assets.reduce((sum, asset) => sum + asset.value, 0)
@@ -26,6 +27,9 @@ export default function AssetWealth() {
 
       {/* Assets List */}
       <AssetsList assets={assets} />
+
+      {/* Monthly Savings */}
+      <MonthlySavings data={savingsSummary} />
     </div>
   )
 }
