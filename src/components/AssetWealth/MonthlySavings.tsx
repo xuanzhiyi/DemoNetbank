@@ -6,7 +6,8 @@ import {
   BarElement,
   Tooltip,
   Legend,
-  ChartOptions
+
+  TooltipItem
 } from 'chart.js'
 import { PiggyBank, TrendingUp, Target, Calendar } from 'lucide-react'
 import { SavingsSummary } from '../../types'
@@ -50,7 +51,7 @@ export default function MonthlySavings({ data }: MonthlySavingsProps) {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          label: (ctx: any) =>
+          label: (ctx: TooltipItem<'bar'>) =>
             `${ctx.dataset.label}: €${ctx.parsed.y.toLocaleString()}`
         }
       }
@@ -59,8 +60,9 @@ export default function MonthlySavings({ data }: MonthlySavingsProps) {
       x: { grid: { display: false } },
       y: {
         ticks: {
-          callback: (v: string | number) =>
-            typeof v === 'number' ? `€${(v / 1000).toFixed(0)}K` : v
+          callback: function (v: number | string) {
+            return typeof v === 'number' ? `€${(v / 1000).toFixed(0)}K` : v
+          }
         }
       }
     }
