@@ -52,12 +52,12 @@ export default function MonthlySavings({ data }: MonthlySavingsProps) {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          label: function(this: any, ctx: TooltipItem<'bar'>): string {
+          label: function(ctx: any): string {
             const label = ctx.dataset.label || ''
             const value = ctx.parsed.y ?? 0
             return `${label}: €${value.toLocaleString()}`
           }
-        }
+        } as any
       }
     },
     scales: {
@@ -70,7 +70,7 @@ export default function MonthlySavings({ data }: MonthlySavingsProps) {
         }
       }
     }
-  }
+  } as any
 
   return (
     <div className="space-y-6">
