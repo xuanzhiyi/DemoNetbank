@@ -7,6 +7,7 @@ import {
   Tooltip,
   Legend,
 
+  ChartOptions,
   TooltipItem
 } from 'chart.js'
 import { PiggyBank, TrendingUp, Target, Calendar } from 'lucide-react'
