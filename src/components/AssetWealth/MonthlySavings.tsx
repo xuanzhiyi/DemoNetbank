@@ -5,7 +5,9 @@ import {
   LinearScale,
   BarElement,
   Tooltip,
-  Legend
+  Legend,
+  ChartOptions,
+  TooltipItem
 } from 'chart.js'
 import { PiggyBank, TrendingUp, Target, Calendar } from 'lucide-react'
 import { SavingsSummary } from '../../types'
@@ -42,14 +44,14 @@ export default function MonthlySavings({ data }: MonthlySavingsProps) {
     ]
   }
 
-  const chartOptions = {
+  const chartOptions: ChartOptions<'bar'> = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: { position: 'top' as const },
       tooltip: {
         callbacks: {
-          label: (ctx: { dataset: { label?: string }; parsed: { y: number } }) =>
+          label: (ctx: TooltipItem<'bar'>) =>
             `${ctx.dataset.label}: €${ctx.parsed.y.toLocaleString()}`
         }
       }
